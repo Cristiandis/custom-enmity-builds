@@ -126,7 +126,6 @@ jobs:
             Enmity-discordnotrack.ipa
             Enmity.dev.ipa
             Enmity.dev-discordnotrack.ipa
-          generate_release_notes: true
           fail_on_unmatched_files: true
           token: ${{ env.GITHUB_TOKEN }}
         env:
