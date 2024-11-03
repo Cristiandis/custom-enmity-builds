@@ -35,6 +35,7 @@ jobs:
         run : |
           ${{ github.workspace }}/patcher ${{ github.workspace }}/Discord.ipa
           mkdir out
+          mv Enmity.ipa Middle.ipa
 
       - name: Download OpenInDiscord
         run: |
@@ -43,7 +44,7 @@ jobs:
 
       - name: Add OpenInDiscord
         run: |
-          unzip -q discord.ipa
+          unzip -q Middle.ipa
           cp -r OpenDiscordSafariExtension.appex Payload/Discord.app/Plugins/
 
       - name: Retrieve version
