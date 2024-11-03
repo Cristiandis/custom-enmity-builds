@@ -1,0 +1,132 @@
+name: Build
+
+on:
+   workflow_dispatch:
+    inputs:
+        ipa_url:
+            description: "Direct link to the decrypted IPA"
+            default: ""
+            required: true
+            type: string
+
+env:
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  build-ipa:
+    runs-on: macos-14
+    
+    steps:
+      - name: Download Enmity
+        run: |
+          wget https://github.com/enmity-mod/tweak/releases/latest/download/Enmity.Sideload.deb
+          wget https://github.com/enmity-mod/tweak/releases/latest/download/Enmity.Sideload.Development.deb
+
+      - name: Prepare Enmity Patcher
+        run : |
+          curl -L https://github.com/enmity-mod/patcher/releases/latest/download/patcher.mac-amd64 -o ${{ github.workspace }}/patcher
+          chmod +x patcher
+
+      - name: Download Discord IPA
+        run: |
+          curl -L -o discord.ipa ${{ github.event.inputs.ipa_url }}
+
+      - name: Patch Discord
+        run : |
+          ${{ github.workspace }}/patcher ${{ github.workspace }}/Discord.ipa
+          mkdir out
+
+      - name: Download OpenInDiscord
+        run: |
+          wget https://raw.githubusercontent.com/daisuke1227/RevengeUpdates/refs/heads/main/OpenDiscordSafariExtension.zip
+          unzip -q OpenDiscordSafariExtension.zip
+
+      - name: Add OpenInDiscord
+        run: |
+          unzip -q discord.ipa
+          cp -r OpenDiscordSafariExtension.appex Payload/Discord.app/Plugins/
+
+      - name: Retrieve version
+        id: version
+        run: echo "__ENMITY_VERSION=$(cat control | grep -E 'Version:(.*)' | awk '{ print $2 }')" >> $GITHUB_OUTPUT
+
+      - name: Install cyan
+        run: pip install --force-reinstall https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
+
+      - name: Inject tweak - Normal Enmity Stable
+        run: |
+          cyan -d -i Payload/Discord.app -o Enmity.ipa -f Enmity.Sideload.deb -usg
+
+      - name: Inject tweak - Normal Enmity Dev
+        run: |
+          cyan -d -i Payload/Discord.app -o Enmity.Dev.ipa -f Enmity.Sideload.Development.deb -usg
+
+      - name: Download DiscordNoTrack
+        run: |
+          wget https://github.com/asdfzxcvbn/DiscordNoTrack/releases/latest/download/DiscordNoTrack.dylib
+
+      - name: Inject tweak - Enmity Stable + DiscordNoTrack
+        run: |
+          cyan -d -i Payload/Discord.app -o Enmity-DiscordNoTrack.ipa -f Enmity.Sideload.deb DiscordNoTrack.dylib -usg
+
+      - name: Inject tweak - Enmity Dev + DiscordNoTrack
+        run: |
+          cyan -d -i Payload/Discord.app -o Enmity-DiscordNoTrack.Dev.ipa -f Enmity.Sideload.deb DiscordNoTrack.dylib -usg
+
+      - name: Upload ipa as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ipa
+          path: Enmity.ipa
+
+      - name: Upload ipa-discordnotrack as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ipa-discordnotrack
+          path: Enmity-DiscordNoTrack.ipa
+
+      - name: Upload ipa.dev as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ipa.dev
+          path: Enmity.Dev.ipa
+
+      - name: Upload ipa.dev-discordnotrack as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ipa.dev-discordnotrack
+          path: Enmity-DiscordNoTrack.Dev.ipa
+
+  release-app:
+    runs-on: macos-14
+    needs: build-ipa
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+
+      - name: Extract Discord Version
+        run: |
+          unzip -q ${{ env.APP_NAME }}.ipa
+          DISCORD_VERSION=$(plutil -p Payload/Discord.app/Info.plist | grep CFBundleShortVersionString | cut -d '"' -f 4)
+          echo "DISCORD_VERSION=$DISCORD_VERSION" >> $GITHUB_ENV
+          echo "__ENMITY_VERSION=$(cat control | grep -E 'Version:(.*)' | awk '{ print $2 }')" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.DISCORD_VERSION }}
+          files: |
+            Enmity.ipa
+            Enmity-DiscordNoTrack.ipa
+            Enmity.Dev.ipa
+            Enmity.Dev-DiscordNoTrack.ipa
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          token: ${{ env.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
