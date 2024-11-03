@@ -72,7 +72,7 @@ jobs:
 
       - name: Inject tweak - Enmity Dev + DiscordNoTrack
         run: |
-          cyan -d -i Payload/Discord.app -o Enmity-DiscordNoTrack.Dev.ipa -f Enmity.Sideload.deb DiscordNoTrack.dylib -usg
+          cyan -d -i Payload/Discord.app -o Enmity.Dev-DiscordNoTrack.ipa -f Enmity.Sideload.deb DiscordNoTrack.dylib -usg
 
       - name: Upload ipa as artifact
         uses: actions/upload-artifact@v4
@@ -96,7 +96,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ipa.dev-discordnotrack
-          path: Enmity-DiscordNoTrack.Dev.ipa
+          path: Enmity.Dev-DiscordNoTrack.ipa
 
   release-app:
     runs-on: macos-14
