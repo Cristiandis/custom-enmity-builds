@@ -120,7 +120,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ env.DISCORD_VERSION }} - ${{ __ENMITY_VERSION }}
+          tag_name: v${{ env.DISCORD_VERSION }} - ${{ steps.version.outputs.__ENMITY_VERSION }}
           files: |
             Enmity.ipa
             Enmity-DiscordNoTrack.ipa
