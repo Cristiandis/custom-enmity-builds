@@ -112,7 +112,7 @@ jobs:
 
       - name: Extract Discord Version
         run: |
-          unzip -q ${{ env.APP_NAME }}.ipa
+          unzip -q Enmity.ipa
           DISCORD_VERSION=$(plutil -p Payload/Discord.app/Info.plist | grep CFBundleShortVersionString | cut -d '"' -f 4)
           echo "DISCORD_VERSION=$DISCORD_VERSION" >> $GITHUB_ENV
           echo "__ENMITY_VERSION=$(cat control | grep -E 'Version:(.*)' | awk '{ print $2 }')" >> $GITHUB_OUTPUT
@@ -120,7 +120,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ env.DISCORD_VERSION }}
+          tag_name: v${{ env.DISCORD_VERSION }} - ${{ __ENMITY_VERSION }}
           files: |
             Enmity.ipa
             Enmity-DiscordNoTrack.ipa
