@@ -57,7 +57,7 @@ jobs:
         run: echo "__ENMITY_VERSION=$(cat control | grep -E 'Version:(.*)' | awk '{ print $2 }')" >> $GITHUB_OUTPUT
 
       - name: Install cyan
-        run: pip install --force-reinstall https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
+        run: pip install --force-reinstall https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip Pillow
 
       - name: Inject tweak - Normal Enmity Stable
         run: |
