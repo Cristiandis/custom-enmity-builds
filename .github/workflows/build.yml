@@ -8,7 +8,11 @@ on:
             default: ""
             required: true
             type: string
-
+        rosiecord_url:
+            description: "Direct link to the rosiecord IPA"
+            default: ""
+            required: true
+            type: string
 env:
   GH_TOKEN: ${{ github.token }}
 
@@ -74,6 +78,20 @@ jobs:
         run: |
           cyan -d -i Payload/Discord.app -o Enmity.Dev-DiscordNoTrack.ipa -f Enmity.Sideload.deb DiscordNoTrack.dylib -usg
 
+      - name: Clean up discord
+        run: |
+            rm -rf Payload/
+
+      - name: Download Rosiecord IPA
+        run: |
+          curl -L -o rosie.ipa ${{ github.event.inputs.rosiecord_url }}
+          unzip -q rosie.ipa
+          cp -r OpenDiscordSafariExtension.appex Payload/Discord.app/Plugins/
+
+      - name: Inject DiscordNoTrack
+        run: |
+          cyan -d -i Payload/Discord.app -o Rosiecord-DiscordNoTrack.ipa -f DiscordNoTrack.dylib -usg
+ 
       - name: Upload ipa as artifact
         uses: actions/upload-artifact@v4
         with:
@@ -97,6 +115,12 @@ jobs:
         with:
           name: ipa.dev-discordnotrack
           path: Enmity.Dev-DiscordNoTrack.ipa
+
+      - name: Upload rosiecord-discordnotrack as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rosiecord-discordnotrack
+          path: Rosiecord-DiscordNoTrack.ipa
 
   release-app:
     runs-on: macos-14
@@ -126,6 +150,7 @@ jobs:
             Enmity-discordnotrack.ipa
             Enmity.dev.ipa
             Enmity.dev-discordnotrack.ipa
+            Rosiecord-DiscordNoTrack.ipa
           fail_on_unmatched_files: true
           token: ${{ env.GITHUB_TOKEN }}
         env:
