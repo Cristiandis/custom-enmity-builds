@@ -25,6 +25,7 @@ jobs:
         run: |
           wget https://github.com/enmity-mod/tweak/releases/latest/download/Enmity.Sideload.deb
           wget https://github.com/enmity-mod/tweak/releases/latest/download/Enmity.Sideload.Development.deb
+          wget https://raw.githubusercontent.com/Cristiandis/rosiecord/refs/heads/master/Icons/EnmityIcon60x60%402x.png
 
       - name: Prepare Enmity Patcher
         run : |
@@ -90,7 +91,7 @@ jobs:
 
       - name: Inject DiscordNoTrack
         run: |
-          cyan -d -i Payload/Discord.app -o Rosiecord-DiscordNoTrack.ipa -f DiscordNoTrack.dylib -usg
+          cyan -d -i Payload/Discord.app -k EnmityIcon60x60@2x.png -o Rosiecord-DiscordNoTrack.ipa -f DiscordNoTrack.dylib -usg
  
       - name: Upload ipa as artifact
         uses: actions/upload-artifact@v4
