@@ -123,36 +123,3 @@ jobs:
           name: rosiecord-discordnotrack
           path: Rosiecord-DiscordNoTrack.ipa
 
-  release-app:
-    runs-on: macos-14
-    needs: build-ipa
-    permissions:
-      contents: write
-
-    steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          merge-multiple: true
-
-      - name: Extract Discord Version
-        run: |
-          unzip -q Enmity.ipa
-          DISCORD_VERSION=$(plutil -p Payload/Discord.app/Info.plist | grep CFBundleShortVersionString | cut -d '"' -f 4)
-          echo "DISCORD_VERSION=$DISCORD_VERSION" >> $GITHUB_ENV
-          echo "__ENMITY_VERSION=$(cat control | grep -E 'Version:(.*)' | awk '{ print $2 }')" >> $GITHUB_OUTPUT
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ env.DISCORD_VERSION }}-2.2.6
-          files: |
-            Enmity.ipa
-            Enmity-discordnotrack.ipa
-            Enmity.dev.ipa
-            Enmity.dev-discordnotrack.ipa
-            Rosiecord-DiscordNoTrack.ipa
-          fail_on_unmatched_files: true
-          token: ${{ env.GITHUB_TOKEN }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
