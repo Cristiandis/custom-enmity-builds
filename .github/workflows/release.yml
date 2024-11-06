@@ -162,7 +162,7 @@ jobs:
           cat > repo.json << EOF
           {
             "name": "Cris' Custom Enmity Builds",
-            "identifier": "com.enmity.store",
+            "identifier": "com.cris.enmitybuilds",
             "sourceURL": "https://raw.githubusercontent.com/${{ github.repository }}/main/repo.json",
             "apps": [
               {
@@ -230,6 +230,8 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Commit repo.json
         uses: EndBug/add-and-commit@v9
@@ -237,3 +239,4 @@ jobs:
           add: "repo.json"
           message: "Update AltStore repo for version ${{ env.DISCORD_VERSION }}-2.2.6"
           default_author: github_actions
+          fetch: false
