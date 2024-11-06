@@ -129,7 +129,14 @@ jobs:
     permissions:
       contents: write
 
+
+
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+  
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -227,11 +234,6 @@ jobs:
             ]
           }
           EOF
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Commit repo.json
         uses: EndBug/add-and-commit@v9
