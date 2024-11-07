@@ -11,5 +11,9 @@ Includes:
 &nbsp;
 <a href="https://raw.githubusercontent.com/Cristiandis/custom-enmity-builds/refs/heads/main/repo.json"><img src="https://raw.githubusercontent.com/YTLitePlus/Assets/main/Github/Buttons/Altstore/URL.png" width="200"></a>
 
+> [!NOTE]
+> Raw decrypted IPAs which are used to provide prepatched IPAs are sourced from the [Enmity](https://github.com/enmity-mod/) community. These raw decrypted IPAs are also used throughout Enmity related projects such as [enmity-mod/tweak](https://github.com/enmity-mod/tweak/) and [acquitelol/rosiecord](https://github.com/acquitelol/rosiecord).\
+> All credits are attributed to the owner(s) of the raw IPAs.
+
 ## I also make my own custom Revenge Builds!
 https://github.com/Cristiandis/RevengeTweak/tree/Custom-Builds
