@@ -142,12 +142,22 @@ jobs:
         with:
           merge-multiple: true
 
-      - name: Extract Discord Version
+      - name: Extract Discord Version and File Sizes
         run: |
           unzip -q Enmity.ipa
           DISCORD_VERSION=$(plutil -p Payload/Discord.app/Info.plist | grep CFBundleShortVersionString | cut -d '"' -f 4)
           echo "DISCORD_VERSION=$DISCORD_VERSION" >> $GITHUB_ENV
           echo "__ENMITY_VERSION=$(cat control | grep -E 'Version:(.*)' | awk '{ print $2 }')" >> $GITHUB_OUTPUT
+          ENMITY_SIZE=$(stat -f%z "Enmity.ipa")
+          ENMITY_NOTRACK_SIZE=$(stat -f%z "Enmity-discordnotrack.ipa") 
+          ENMITY_DEV_SIZE=$(stat -f%z "Enmity.dev.ipa")
+          ENMITY_DEV_NOTRACK_SIZE=$(stat -f%z "Enmity.dev-discordnotrack.ipa")
+          ROSIECORD_NOTRACK_SIZE=$(stat -f%z "Rosiecord-DiscordNoTrack.ipa")
+          echo "ENMITY_SIZE=$ENMITY_SIZE" >> $GITHUB_ENV
+          echo "ENMITY_NOTRACK_SIZE=$ENMITY_NOTRACK_SIZE" >> $GITHUB_ENV
+          echo "ENMITY_DEV_SIZE=$ENMITY_DEV_SIZE" >> $GITHUB_ENV
+          echo "ENMITY_DEV_NOTRACK_SIZE=$ENMITY_DEV_NOTRACK_SIZE" >> $GITHUB_ENV
+          echo "ROSIECORD_NOTRACK_SIZE=$ROSIECORD_NOTRACK_SIZE" >> $GITHUB_ENV
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -180,7 +190,8 @@ jobs:
                 "versionDate": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
                 "downloadURL": "https://github.com/${{ github.repository }}/releases/download/v${{ env.DISCORD_VERSION }}-2.2.6/Enmity.ipa",
                 "localizedDescription": "Discord with Enmity injected",
-                "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png"
+                "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png",
+                "size": ${{ env.ENMITY_SIZE }}
               },
               {
                 "name": "Enmity NoTrack",
@@ -190,7 +201,8 @@ jobs:
                 "versionDate": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
                 "downloadURL": "https://github.com/${{ github.repository }}/releases/download/v${{ env.DISCORD_VERSION }}-2.2.6/Enmity-discordnotrack.ipa",
                 "localizedDescription": "Discord with Enmity and NoTrack injected",
-                "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png"
+                "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png",
+                "size": ${{ env.ENMITY_NOTRACK_SIZE }}
               },
               {
                 "name": "Enmity Dev",
@@ -200,7 +212,8 @@ jobs:
                 "versionDate": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
                 "downloadURL": "https://github.com/${{ github.repository }}/releases/download/v${{ env.DISCORD_VERSION }}-2.2.6/Enmity.dev.ipa",
                 "localizedDescription": "Discord with Enmity Dev injected",
-                "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png"
+                "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png",
+                "size": ${{ env.ENMITY_DEV_SIZE }}
               },
               {
                 "name": "Enmity Dev NoTrack",
@@ -210,7 +223,8 @@ jobs:
                 "versionDate": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
                 "downloadURL": "https://github.com/${{ github.repository }}/releases/download/v${{ env.DISCORD_VERSION }}-2.2.6/Enmity.dev-discordnotrack.ipa",
                 "localizedDescription": "Discord with Enmity Dev and NoTrack injected",
-                "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png"
+                "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png",
+                "size": ${{ env.ENMITY_DEV_NOTRACK_SIZE }}
               },
               {
                 "name": "Rosiecord NoTrack",
@@ -220,7 +234,8 @@ jobs:
                 "versionDate": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
                 "downloadURL": "https://github.com/${{ github.repository }}/releases/download/v${{ env.DISCORD_VERSION }}-2.2.6/Rosiecord-DiscordNoTrack.ipa",
                 "localizedDescription": "Discord with Rosiecord and NoTrack injected",
-                "iconURL": "https://raw.githubusercontent.com/Cristiandis/rosiecord/refs/heads/master/Icons/EnmityIcon60x60@2x.png"
+                "iconURL": "https://raw.githubusercontent.com/Cristiandis/rosiecord/refs/heads/master/Icons/EnmityIcon60x60@2x.png",
+                "size": ${{ env.ROSIECORD_NOTRACK_SIZE }}
               }
             ],
             "news": [
