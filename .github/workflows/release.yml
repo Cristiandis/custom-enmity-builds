@@ -233,7 +233,7 @@ jobs:
                 "version": "${{ env.DISCORD_VERSION }}-2.2.6",
                 "versionDate": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
                 "downloadURL": "https://github.com/${{ github.repository }}/releases/download/v${{ env.DISCORD_VERSION }}-2.2.6/Rosiecord-DiscordNoTrack.ipa",
-                "localizedDescription": "Discord with Rosiecord and NoTrack injected",
+                "localizedDescription": "Discord with Rosiecord and NoTrack injected, only Quicksand font",
                 "iconURL": "https://raw.githubusercontent.com/Cristiandis/rosiecord/refs/heads/master/Icons/EnmityIcon60x60@2x.png",
                 "size": ${{ env.ROSIECORD_NOTRACK_SIZE }}
               }
