@@ -54,7 +54,7 @@
       "version": "254.0-2.2.6",
       "versionDate": "2024-11-13T10:15:05Z",
       "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v254.0-2.2.6/Rosiecord-DiscordNoTrack.ipa",
-      "localizedDescription": "Discord with Rosiecord and NoTrack injected",
+      "localizedDescription": "Discord with Rosiecord and NoTrack injected, only Quicksand font",
       "iconURL": "https://raw.githubusercontent.com/Cristiandis/rosiecord/refs/heads/master/Icons/EnmityIcon60x60@2x.png",
       "size": 96085657
     }
