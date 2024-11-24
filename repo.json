@@ -8,7 +8,7 @@
       "bundleIdentifier": "com.hammerandchisel.discord",
       "developerName": "Enmity Team, Cristiandis",
       "version": "255.0-2.2.6",
-      "versionDate": "2024-11-20T15:13:27Z",
+      "versionDate": "2024-11-24T18:38:00Z",
       "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v255.0-2.2.6/Enmity.ipa",
       "localizedDescription": "Discord with Enmity injected",
       "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png",
@@ -19,7 +19,7 @@
       "bundleIdentifier": "com.hammerandchisel.discord",
       "developerName": "Enmity Team, Cristiandis",
       "version": "255.0-2.2.6",
-      "versionDate": "2024-11-20T15:13:27Z",
+      "versionDate": "2024-11-24T18:38:00Z",
       "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v255.0-2.2.6/Enmity-discordnotrack.ipa",
       "localizedDescription": "Discord with Enmity and NoTrack injected",
       "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png",
@@ -30,7 +30,7 @@
       "bundleIdentifier": "com.hammerandchisel.discord",
       "developerName": "Enmity Team, Cristiandis",
       "version": "255.0-2.2.6",
-      "versionDate": "2024-11-20T15:13:27Z",
+      "versionDate": "2024-11-24T18:38:00Z",
       "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v255.0-2.2.6/Enmity.dev.ipa",
       "localizedDescription": "Discord with Enmity Dev injected",
       "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png",
@@ -41,7 +41,7 @@
       "bundleIdentifier": "com.hammerandchisel.discord",
       "developerName": "Enmity Team, Cristiandis",
       "version": "255.0-2.2.6",
-      "versionDate": "2024-11-20T15:13:27Z",
+      "versionDate": "2024-11-24T18:38:00Z",
       "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v255.0-2.2.6/Enmity.dev-discordnotrack.ipa",
       "localizedDescription": "Discord with Enmity Dev and NoTrack injected",
       "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png",
@@ -52,11 +52,11 @@
       "bundleIdentifier": "com.hammerandchisel.discord",
       "developerName": "Enmity Team, Rosie, Cristiandis",
       "version": "255.0-2.2.6",
-      "versionDate": "2024-11-20T15:13:27Z",
+      "versionDate": "2024-11-24T18:38:00Z",
       "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v255.0-2.2.6/Rosiecord-DiscordNoTrack.ipa",
-      "localizedDescription": "Discord with Rosiecord and NoTrack injected, only Quicksand font",
+      "localizedDescription": "Discord with Rosiecord and NoTrack injected, only Quicksand font + MaterialTwoTone Icons",
       "iconURL": "https://raw.githubusercontent.com/Cristiandis/rosiecord/refs/heads/master/Icons/EnmityIcon60x60@2x.png",
-      "size": 91433850
+      "size": 93135482
     }
   ],
   "news": [
@@ -64,7 +64,7 @@
       "title": "Enmity Updated",
       "identifier": "enmity-release-255.0-2.2.6",
       "caption": "New Discord Version with Enmity",
-      "date": "2024-11-20T15:13:27Z",
+      "date": "2024-11-24T18:38:00Z",
       "tintColor": "#0968da"
     }
   ]
