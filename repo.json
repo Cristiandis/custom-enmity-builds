@@ -7,64 +7,64 @@
       "name": "Enmity",
       "bundleIdentifier": "com.hammerandchisel.discord",
       "developerName": "Enmity Team, Cristiandis",
-      "version": "257.0-2.2.6",
-      "versionDate": "2024-12-05T23:13:31Z",
-      "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v257.0-2.2.6/Enmity.ipa",
+      "version": "258.0-2.2.6",
+      "versionDate": "2024-12-18T05:56:00Z",
+      "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v258.0-2.2.6/Enmity.ipa",
       "localizedDescription": "Discord with Enmity injected",
       "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png",
-      "size": 88880496
+      "size": 94143498
     },
     {
       "name": "Enmity NoTrack",
       "bundleIdentifier": "com.hammerandchisel.discord",
       "developerName": "Enmity Team, Cristiandis",
-      "version": "257.0-2.2.6",
-      "versionDate": "2024-12-05T23:13:31Z",
-      "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v257.0-2.2.6/Enmity-discordnotrack.ipa",
+      "version": "258.0-2.2.6",
+      "versionDate": "2024-12-18T05:56:00Z",
+      "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v258.0-2.2.6/Enmity-discordnotrack.ipa",
       "localizedDescription": "Discord with Enmity and NoTrack injected",
       "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png",
-      "size": 88885742
+      "size": 94148662
     },
     {
       "name": "Enmity Dev",
       "bundleIdentifier": "com.hammerandchisel.discord",
       "developerName": "Enmity Team, Cristiandis",
-      "version": "257.0-2.2.6",
-      "versionDate": "2024-12-05T23:13:31Z",
-      "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v257.0-2.2.6/Enmity.dev.ipa",
+      "version": "258.0-2.2.6",
+      "versionDate": "2024-12-18T05:56:00Z",
+      "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v258.0-2.2.6/Enmity.dev.ipa",
       "localizedDescription": "Discord with Enmity Dev injected",
       "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png",
-      "size": 88880597
+      "size": 94143601
     },
     {
       "name": "Enmity Dev NoTrack",
       "bundleIdentifier": "com.hammerandchisel.discord",
       "developerName": "Enmity Team, Cristiandis",
-      "version": "257.0-2.2.6",
-      "versionDate": "2024-12-05T23:13:31Z",
-      "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v257.0-2.2.6/Enmity.dev-discordnotrack.ipa",
+      "version": "258.0-2.2.6",
+      "versionDate": "2024-12-18T05:56:00Z",
+      "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v258.0-2.2.6/Enmity.dev-discordnotrack.ipa",
       "localizedDescription": "Discord with Enmity Dev and NoTrack injected",
       "iconURL": "https://enmity-mod.github.io/repo/CydiaIcon@3x.png",
-      "size": 88885742
+      "size": 94148662
     },
     {
       "name": "Rosiecord NoTrack",
       "bundleIdentifier": "com.hammerandchisel.discord",
       "developerName": "Enmity Team, Rosie, Cristiandis",
-      "version": "257.0-2.2.6",
-      "versionDate": "2024-12-05T23:13:31Z",
-      "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v257.0-2.2.6/Rosiecord-DiscordNoTrack.ipa",
+      "version": "258.0-2.2.6",
+      "versionDate": "2024-12-18T05:56:00Z",
+      "downloadURL": "https://github.com/Cristiandis/custom-enmity-builds/releases/download/v258.0-2.2.6/Rosiecord-DiscordNoTrack.ipa",
       "localizedDescription": "Discord with Rosiecord and NoTrack injected, only Quicksand font + MaterialTwoTone Icons",
       "iconURL": "https://raw.githubusercontent.com/Cristiandis/rosiecord/refs/heads/master/Icons/EnmityIcon60x60@2x.png",
-      "size": 92707490
+      "size": 97970979
     }
   ],
   "news": [
     {
       "title": "Enmity Updated",
-      "identifier": "enmity-release-257.0-2.2.6",
+      "identifier": "enmity-release-258.0-2.2.6",
       "caption": "New Discord Version with Enmity",
-      "date": "2024-12-05T23:13:31Z",
+      "date": "2024-12-18T05:56:00Z",
       "tintColor": "#0968da"
     }
   ]
